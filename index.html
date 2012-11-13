@@ -1,0 +1,36 @@
+<!doctype>
+<html>
+<head>
+  <link rel="stylesheet" href="leaflet.min.css"/>
+  <style>
+    #map { height: 180px; }
+  </style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+
+  <script src="head.load.min.js"></script>
+  <script>
+    head
+    .js("leaflet.min.js")
+    .ready(function(){
+
+      // create a map in the "map" div, set the view to a given place and zoom
+      var map = L.map('map').setView([-45.505, -21.2109], 13);
+
+      // add a CloudMade tile layer with style #997
+      L.tileLayer('http://{s}.tile.cloudmade.com/[API-key]/997/256/{z}/{x}/{y}.png', {
+          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+      }).addTo(map);
+
+      // add a marker in the given location, attach some popup content to it and open the popup
+      L.marker([-45.515, -21.2109]).addTo(map)
+          .bindPopup('A pretty CSS3 popup. <br> Easily customizable.').openPopup();
+
+    })
+    ;
+  </script>
+</body>
+</html>
