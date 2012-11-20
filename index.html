@@ -21,23 +21,27 @@
     .ready(function(){
 
       // create a map in the "map" div, set the view to a given place and zoom
-      var map = L.map('map', {
-        zoomControl: false,
-        attributionControl: false
+      map = L.map('map', {
+        zoomControl: false, //removendo controle de zoom
+        attributionControl: false //removendo informações do Leaflet
       })
-      .setView([-21.2105, -45.0109], 13);
+      .setView([-21.244722,-45.000429], 15);
 
       L.control.zoom({
-        position: 'bottomright'
+        position: 'bottomright' //adicionando o controle de zoom na parte inferior direita do mapa
       }).addTo(map);
 
       // add a CloudMade tile layer with style #997
-      L.tileLayer('http://{s}.tile.cloudmade.com/4545df0a35ca4aa1bbf2afaab46c68e0/997/256/{z}/{x}/{y}.png', {
+      L.tileLayer('http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png', {
+          key: '4545df0a35ca4aa1bbf2afaab46c68e0',
           attribution: '',
           maxZoom: 18
       }).addTo(map);
 
-      map.on('locationfound', function(e){
+      /************
+      * Mobile
+      *************/
+      /* map.on('locationfound', function(e){
         var radius = e.accuracy / 2;
         L.marker(e.latlng).addTo(map)
           .bindPopup("Você está em um raio de " + radius + " metros desse ponto").openPopup();
@@ -49,13 +53,57 @@
         alert(e.message);
       });
 
-      map.locate({setView: true, maxZoom: 16});
+      map.locate({setView: true, maxZoom: 16}); */
+      /************
+      * FIM Mobile
+      *************/
 
       // add a marker in the given location, attach some popup content to it and open the popup
-      L.marker([-21.2105, -45.0109]).addTo(map)
-          .bindPopup('A pretty CSS3 popup. <br> Easily customizable.').openPopup();
+      L.marker([-21.244722,-45.000429])
+      .on('click', function(event){
+        console.warn(event);
+      })
+      .addTo(map)
+      .bindPopup('A pretty CSS3 popup. <br> Easily customizable.').openPopup();
 
-
+      
+      /************
+      * GeoJSON
+      *************/
+      var geojsonFeature = {
+        "type": "Feature",
+        "properties": {
+          "name": "Coors Field",
+          "amenity": "Baseball Stadium",
+          "popupContent": "This is where the Rockies play!"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-45.001266, -21.244702]
+        },
+        "id": 1
+      };
+      L.geoJson(geojsonFeature, {
+        style: {
+          "color": "#ff0000",
+          "weight": 4,
+          "opacity": 0.80
+        },
+        pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng, {
+            radius: 8,
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+          })
+        }
+      }).addTo(map);
+      /************
+      * FIM GeoJSON
+      *************/
+      
 
     })
     ;
