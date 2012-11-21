@@ -12,11 +12,12 @@
     position: 'bottomright' //adicionando o controle de zoom na parte inferior direita do mapa
   }).addTo(map);
 
-  // add a CloudMade tile layer with style #997
-  Leaflet.tileLayer('http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png', {
+  // add a CloudMade tile layer
+  Leaflet.tileLayer('http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png', {
       key: '4545df0a35ca4aa1bbf2afaab46c68e0',
       attribution: '',
-      maxZoom: 18
+      maxZoom: 18,
+      styleId: 997
   }).addTo(map);
 
 })(window, L);
