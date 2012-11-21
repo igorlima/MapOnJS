@@ -26,11 +26,16 @@
     Leaflet.geoJson(this.geoJson, {
       style: styleFeature,
       pointToLayer: function (feature, latlng) {
-        return Leaflet.circleMarker (latlng, stylePoint);
+        return Leaflet.circleMarker (latlng, stylePoint); //alteração para que o ponto seja um círculo
       },
       onEachFeature: function (feature, layer) {
+        //adicionando popup a cada ponto
         if (feature.properties && feature.properties.popupContent)
           layer.bindPopup(feature.properties.popupContent);
+      },
+      filter: function(feature, layer) {
+        //utilizando filtro para alterar a visibilidade do ponto no mapa
+        return feature.properties.show_on_map;
       }
     }).addTo(MapOnJS.map);
     return Local;
@@ -45,7 +50,8 @@
     "properties": {
       "name": "Evolutio",
       "amenity": "Local de trabalho",
-      "popupContent": "Aqui é a Evolutio."
+      "popupContent": "Aqui é a Evolutio.",
+      "show_on_map": true
     },
     "geometry": {
       "type": "Point",
@@ -58,7 +64,8 @@
     "properties": {
       "name": "Lavras Shopping",
       "amenity": "Local de lazer",
-      "popupContent": "Aqui é o shopping de Lavras."
+      "popupContent": "Aqui é o shopping de Lavras.",
+      "show_on_map": true
     },
     "geometry": {
       "type": "Point",
@@ -71,7 +78,8 @@
     "properties": {
       "name": "Residência do Igor (Baiano)",
       "amenity": "Residência",
-      "popupContent": "Aqui é a residência do senhor Baiano."
+      "popupContent": "Aqui é a residência do senhor Baiano.",
+      "show_on_map": true
     },
     "geometry": {
       "type": "Point",
@@ -84,7 +92,8 @@
     "properties": {
       "name": "Residência da Gleycia",
       "amenity": "Residência",
-      "popupContent": "Aqui é a residência da querida Gleycinha."
+      "popupContent": "Aqui é a residência da querida Gleycinha.",
+      "show_on_map": true
     },
     "geometry": {
       "type": "Point",
@@ -97,7 +106,8 @@
     "properties": {
       "name": "Leboratório de projetos em manejos florestais",
       "amenity": "Local de Trabalho",
-      "popupContent": "Aqui é o Lemaf do DCF/UFLA."
+      "popupContent": "Aqui é o Lemaf do DCF/UFLA.",
+      "show_on_map": true
     },
     "geometry": {
       "type": "Point",
