@@ -26,6 +26,7 @@ app.get('/teste', function(req, res){
 });
 
 app.use('/static', express.static(__dirname + '/'));
+app.use('/public', express.static(__dirname + '/'));
 
 
 app.listen(8080);

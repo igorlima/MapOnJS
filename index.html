@@ -5,7 +5,7 @@
   <style>
     #map { 
       width: 100%;
-      height: 180px; 
+      height: 250px; 
     }
   </style>
 </head>
@@ -24,6 +24,14 @@
 
       var map = MapOnJS.map;
       map.setView([-21.244722,-45.000429], 15);
+
+      // add a marker in the given location, attach some popup content to it and open the popup
+      L.marker([-21.240992,-44.999053])
+      .on('click', function(event){
+        console.warn(event);
+      })
+      .addTo(map)
+      .bindPopup('Centro de Lavras. <br> Banco do Brasil.').openPopup();
 
       /************
       * Mobile
@@ -45,13 +53,6 @@
       * FIM Mobile
       *************/
 
-      // add a marker in the given location, attach some popup content to it and open the popup
-      L.marker([-21.240992,-44.999053])
-      .on('click', function(event){
-        console.warn(event);
-      })
-      .addTo(map)
-      .bindPopup('Centro de Lavras. <br> Banco do Brasil.').openPopup();
 
       
       /************
