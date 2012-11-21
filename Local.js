@@ -5,6 +5,8 @@
   };
   Local.fn = Local.prototype;
 
+  var layer = Leaflet.geoJson().addTo(MapOnJS.map);
+
   var styleFeature = {
     "color": "#dd0000",
     "weight": 4,
@@ -20,7 +22,7 @@
     fillOpacity: 0.8
   };
 
-  Local.fn.addTo = function (map) {
+  Local.fn.addToMap = function () {
     Leaflet.geoJson(this.geoJson, {
       style: styleFeature,
       pointToLayer: function (feature, latlng) {
@@ -30,10 +32,15 @@
         if (feature.properties && feature.properties.popupContent)
           layer.bindPopup(feature.properties.popupContent);
       }
-    }).addTo(map);
+    }).addTo(MapOnJS.map);
+    return Local;
   };
 
-  Local.evolutio = new Local({
+  Local.addToMap = function (geoJson) {
+    return new Local(geoJson).addToMap();
+  };
+
+  Local.evolutio = {
     "type": "Feature",
     "properties": {
       "name": "Evolutio",
@@ -44,9 +51,9 @@
       "type": "Point",
       "coordinates": [-44.989073, -21.251152]
     }
-  });
+  };
 
-  Local.shopping = new Local({
+  Local.shopping = {
     "type": "Feature",
     "properties": {
       "name": "Lavras Shopping",
@@ -57,9 +64,9 @@
       "type": "Point",
       "coordinates": [-44.990285, -21.248087]
     }
-  });
+  };
 
-  Local.casaDoBahia = new Local({
+  Local.casaDoBahia = {
     "type": "Feature",
     "properties": {
       "name": "Residência do Igor (Baiano)",
@@ -70,9 +77,9 @@
       "type": "Point",
       "coordinates": [-44.991186, -21.247572]
     }
-  });
+  };
 
-  Local.casaDaGleyce = new Local({
+  Local.casaDaGleyce = {
     "type": "Feature",
     "properties": {
       "name": "Residência da Gleycia",
@@ -83,9 +90,9 @@
       "type": "Point",
       "coordinates": [-44.987082, -21.236952]
     }
-  });
+  };
 
-  Local.lemaf = new Local({
+  Local.lemaf = {
     "type": "Feature",
     "properties": {
       "name": "Leboratório de projetos em manejos florestais",
@@ -96,6 +103,6 @@
       "type": "Point",
       "coordinates": [-44.974208, -21.226194]
     }
-  });
+  };
 
 })(window.MapOnJS, L);

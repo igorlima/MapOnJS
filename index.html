@@ -58,11 +58,12 @@
       /************
       * Adicionando locais no mapa
       *************/
-      MapOnJS.Local.evolutio.addTo(map);
-      MapOnJS.Local.shopping.addTo(map);
-      MapOnJS.Local.casaDoBahia.addTo(map);
-      MapOnJS.Local.casaDaGleyce.addTo(map);
-      MapOnJS.Local.lemaf.addTo(map);
+      MapOnJS.Local
+      .addToMap(MapOnJS.Local.evolutio)
+      .addToMap(MapOnJS.Local.shopping)
+      .addToMap(MapOnJS.Local.casaDoBahia)
+      .addToMap(MapOnJS.Local.casaDaGleyce)
+      .addToMap(MapOnJS.Local.lemaf);
       /************
       * FIM da adição dos locais no mapa
       *************/
