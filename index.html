@@ -18,25 +18,12 @@
   <script>
     head
     .js("leaflet.min.js")
+    .js("MapOnJS.js")
+    .js("Local.js")
     .ready(function(){
 
-      // create a map in the "map" div, set the view to a given place and zoom
-      map = L.map('map', {
-        zoomControl: false, //removendo controle de zoom
-        attributionControl: false //removendo informações do Leaflet
-      })
-      .setView([-21.244722,-45.000429], 15);
-
-      L.control.zoom({
-        position: 'bottomright' //adicionando o controle de zoom na parte inferior direita do mapa
-      }).addTo(map);
-
-      // add a CloudMade tile layer with style #997
-      L.tileLayer('http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png', {
-          key: '4545df0a35ca4aa1bbf2afaab46c68e0',
-          attribution: '',
-          maxZoom: 18
-      }).addTo(map);
+      var map = MapOnJS.map;
+      map.setView([-21.244722,-45.000429], 15);
 
       /************
       * Mobile
@@ -59,49 +46,24 @@
       *************/
 
       // add a marker in the given location, attach some popup content to it and open the popup
-      L.marker([-21.244722,-45.000429])
+      L.marker([-21.240992,-44.999053])
       .on('click', function(event){
         console.warn(event);
       })
       .addTo(map)
-      .bindPopup('A pretty CSS3 popup. <br> Easily customizable.').openPopup();
+      .bindPopup('Centro de Lavras. <br> Banco do Brasil.').openPopup();
 
       
       /************
-      * GeoJSON
+      * Adicionando locais no mapa
       *************/
-      var geojsonFeature = {
-        "type": "Feature",
-        "properties": {
-          "name": "Coors Field",
-          "amenity": "Baseball Stadium",
-          "popupContent": "This is where the Rockies play!"
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [-45.001266, -21.244702]
-        },
-        "id": 1
-      };
-      L.geoJson(geojsonFeature, {
-        style: {
-          "color": "#dd0000",
-          "weight": 4,
-          "opacity": 0.80
-        },
-        pointToLayer: function (feature, latlng) {
-          return L.circleMarker(latlng, {
-            radius: 8,
-            fillColor: "#ff7800",
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
-          })
-        }
-      }).addTo(map);
+      MapOnJS.Local.evolutio.addTo(map);
+      MapOnJS.Local.shopping.addTo(map);
+      MapOnJS.Local.casaDoBahia.addTo(map);
+      MapOnJS.Local.casaDaGleyce.addTo(map);
+      MapOnJS.Local.lemaf.addTo(map);
       /************
-      * FIM GeoJSON
+      * FIM da adição dos locais no mapa
       *************/
       
 
