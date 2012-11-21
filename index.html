@@ -4,8 +4,7 @@
   <link rel="stylesheet" href="leaflet.min.css"/>
   <style>
     #map { 
-      width: 100%;
-      height: 250px; 
+      height: 100%; 
     }
   </style>
 </head>
@@ -23,38 +22,39 @@
     .ready(function(){
 
       var map = MapOnJS.map;
-      map.setView([-21.244722,-45.000429], 15);
-
-      // add a marker in the given location, attach some popup content to it and open the popup
-      L.marker([-21.240992,-44.999053])
-      .on('click', function(event){
-        console.warn(event);
-      })
-      .addTo(map)
-      .bindPopup('Centro de Lavras. <br> Banco do Brasil.').openPopup();
 
       /************
-      * Mobile
+      * Localização
       *************/
-      /* map.on('locationfound', function(e){
+      map.on('locationfound', function(e){
         var radius = e.accuracy / 2;
-        L.marker(e.latlng).addTo(map)
-          .bindPopup("Você está em um raio de " + radius + " metros desse ponto").openPopup();
 
-        L.circle(e.latlng, radius).addTo(map);
+        //Adicionando um Marker com a localização
+        L.marker(e.latlng)
+        .addTo(map)
+        .bindPopup("Você está em um raio de " + radius + " metros desse ponto")
+        .openPopup()
+        .on('click', function(e){
+          var latlng = e.target.getLatLng();
+          console.log(latlng.toLocaleString());
+        });
+
+        L.circle(e.latlng, radius) //criando raio de localização
+        .addTo(map) //Adicionando o raio de localizacao
+        .bringToBack(); //movendo o raio de localização para ficar atrás da camada de Locais
+        map.setView(e.latlng, 15); //alterando view no mapa
       });
 
       map.on('locationerror', function onLocationError(e) {
         alert(e.message);
       });
 
-      map.locate({setView: true, maxZoom: 16}); */
+      map.locate({setView: true, maxZoom: 18});
       /************
-      * FIM Mobile
+      * FIM Localização
       *************/
 
 
-      
       /************
       * Adicionando locais no mapa
       *************/
