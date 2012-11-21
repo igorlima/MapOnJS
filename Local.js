@@ -7,10 +7,16 @@
 
   var layer = Leaflet.geoJson().addTo(MapOnJS.map);
 
-  var styleFeature = {
+  var styleFeaturePoint = {
     "color": "#dd0000",
     "weight": 4,
     "opacity": 0.80
+  };
+
+  var styleFeaturePolygon = {
+    "color": "#f000ff",
+    "weight": 1,
+    "opacity": 0.99
   };
 
   var stylePoint = {
@@ -24,7 +30,12 @@
 
   Local.fn.addToMap = function () {
     Leaflet.geoJson(this.geoJson, {
-      style: styleFeature,
+      style: function(feature) {
+        switch (feature.geometry.type) {
+          case 'Point':    return styleFeaturePoint;
+          case 'Polygon': return styleFeaturePolygon;
+        }
+      },
       pointToLayer: function (feature, latlng) {
         return Leaflet.circleMarker (latlng, stylePoint); //alteração para que o ponto seja um círculo
       },
