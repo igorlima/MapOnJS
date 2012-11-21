@@ -60,7 +60,6 @@
     "type": "Feature",
     "properties": {
       "name": "Evolutio",
-      "amenity": "Local de trabalho",
       "popupContent": "Aqui é a Evolutio.",
       "show_on_map": true
     },
@@ -74,7 +73,6 @@
     "type": "Feature",
     "properties": {
       "name": "Lavras Shopping",
-      "amenity": "Local de lazer",
       "popupContent": "Aqui é o shopping de Lavras.",
       "show_on_map": true
     },
@@ -88,7 +86,6 @@
     "type": "Feature",
     "properties": {
       "name": "Residência do Igor (Baiano)",
-      "amenity": "Residência",
       "popupContent": "Aqui é a residência do senhor Baiano.",
       "show_on_map": true
     },
@@ -102,7 +99,6 @@
     "type": "Feature",
     "properties": {
       "name": "Residência da Gleycia",
-      "amenity": "Residência",
       "popupContent": "Aqui é a residência da querida Gleycinha.",
       "show_on_map": true
     },
@@ -116,7 +112,6 @@
     "type": "Feature",
     "properties": {
       "name": "Leboratório de projetos em manejos florestais",
-      "amenity": "Local de Trabalho",
       "popupContent": "Aqui é o Lemaf do DCF/UFLA.",
       "show_on_map": true
     },
