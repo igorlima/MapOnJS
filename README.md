@@ -1,4 +1,0 @@
-MapOnJS
-=======
-
-Brincando com mapa
