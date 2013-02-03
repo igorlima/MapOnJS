@@ -1,0 +1,15 @@
+juicer merge bars.css     -m yui_compressor -i -f
+juicer merge base.css     -m yui_compressor -i -f
+juicer merge buttons.css  -m yui_compressor -i -f
+juicer merge chevrons.css -m yui_compressor -i -f
+juicer merge counts.css   -m yui_compressor -i -f
+juicer merge forms.css    -m yui_compressor -i -f
+juicer merge lists.css    -m yui_compressor -i -f
+juicer merge popovers.css -m yui_compressor -i -f
+juicer merge push.css     -m yui_compressor -i -f
+juicer merge segmented-controllers.css -m yui_compressor -i -f
+juicer merge sliders.css  -m yui_compressor -i -f
+juicer merge toggles.css  -m yui_compressor -i -f
+
+juicer merge lanche.css   -m yui_compressor -i -f
+juicer merge base.css bars.css buttons.css chevrons.css lists.css lanche.css icon-sprites.css -o index.min.css -m yui_compressor -i -f

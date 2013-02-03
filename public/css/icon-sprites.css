@@ -1,0 +1,27 @@
+.icon-hamburger, .icon-home, .icon-messages, .icon-profile{
+	background: url(../img/icon-sprites.png) no-repeat;
+}
+
+.icon-hamburger{
+	background-position: 0 0;
+	width: 24px;
+	height: 18px;
+}
+
+.icon-home{
+	background-position: 0 -20px;
+	width: 24px;
+	height: 18px;
+}
+
+.icon-messages{
+	background-position: 0px -40px;
+	width: 24px;
+	height: 18px;
+}
+
+.icon-profile{
+	background-position: 0px -60px;
+	width: 24px;
+	height: 18px;
+}
