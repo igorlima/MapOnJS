@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+gem 'execjs'
+gem 'therubyracer'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -35,4 +37,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
+
+gem 'mongoid', '~> 3.0.2'
+gem 'omniauth-facebook'
